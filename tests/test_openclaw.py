@@ -5,7 +5,7 @@ Tests for OpenClaw integration module.
 import json
 import pytest
 
-from secureagent.openclaw import (
+from persona.openclaw import (
     OpenClawGuard,
     OpenClawSecurityProxy,
     ScanResult,

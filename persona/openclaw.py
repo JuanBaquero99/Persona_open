@@ -26,10 +26,10 @@ Architecture:
 
 Usage:
     # As standalone proxy server
-    python -m secureagent.openclaw --port 18790 --gateway ws://127.0.0.1:18789
+    python -m persona.openclaw --port 18790 --gateway ws://127.0.0.1:18789
 
     # Programmatic integration
-    from secureagent.openclaw import OpenClawGuard, OpenClawSecurityProxy
+    from persona.openclaw import OpenClawGuard, OpenClawSecurityProxy
 
     # 1) Validate individual messages
     guard = OpenClawGuard()
@@ -63,12 +63,12 @@ from typing import Any, Dict, List, Optional, Tuple, Set
 from datetime import datetime, timezone
 from enum import Enum
 
-from secureagent.proxy import SecureProxy, SecurityEvent, SecurityException
-from secureagent.toolguard import ToolGuard, ToolCallVerdict, ToolPolicy, Permission, ViolationType
-from secureagent.callchain import CallChain, CallChainAnomaly, AnomalyType
-from secureagent.normalizer import InputNormalizer
-from secureagent.ipi import IndirectPromptInjectionRule, IPIDetection
-from secureagent.domain import DomainFilterRule
+from persona.proxy import SecureProxy, SecurityEvent, SecurityException
+from persona.toolguard import ToolGuard, ToolCallVerdict, ToolPolicy, Permission, ViolationType
+from persona.callchain import CallChain, CallChainAnomaly, AnomalyType
+from persona.normalizer import InputNormalizer
+from persona.ipi import IndirectPromptInjectionRule, IPIDetection
+from persona.domain import DomainFilterRule
 
 logger = logging.getLogger(__name__)
 
@@ -708,7 +708,7 @@ class OpenClawSecurityProxy:
         asyncio.run(proxy.start())
 
     Or from CLI:
-        python -m secureagent.openclaw --port 18790 --gateway ws://127.0.0.1:18789
+        python -m persona.openclaw --port 18790 --gateway ws://127.0.0.1:18789
     """
 
     def __init__(
@@ -936,7 +936,7 @@ description: "Runtime security proxy for AI agents — blocks jailbreaks, prompt
 author: Persona
 tags: [security, proxy, jailbreak, injection, firewall]
 dependencies:
-  python: ["secureagent"]
+  python: ["persona"]
 ---
 
 # Persona Security Guard
@@ -990,19 +990,19 @@ def main():
         epilog="""
 Examples:
   # Start proxy (intercepts OpenClaw Gateway traffic)
-  python -m secureagent.openclaw --port 18790 --gateway ws://127.0.0.1:18789
+  python -m persona.openclaw --port 18790 --gateway ws://127.0.0.1:18789
 
   # Scan a single message
-  python -m secureagent.openclaw --scan "Ignore all previous instructions"
+  python -m persona.openclaw --scan "Ignore all previous instructions"
 
   # Validate a tool call
-  python -m secureagent.openclaw --tool bash --args '{"command": "cat /etc/passwd"}'
+  python -m persona.openclaw --tool bash --args '{"command": "cat /etc/passwd"}'
 
   # Generate OpenClaw skill
-  python -m secureagent.openclaw --generate-skill
+  python -m persona.openclaw --generate-skill
 
   # Quick self-test
-  python -m secureagent.openclaw --test
+  python -m persona.openclaw --test
         """,
     )
 

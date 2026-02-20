@@ -11,8 +11,8 @@ Simulates attacks where the agent tries to send data to:
 """
 
 import pytest
-from secureagent.domain import DomainFilterRule, DomainScanResult
-from secureagent.proxy import SecureProxy, SecurityException
+from persona.domain import DomainFilterRule, DomainScanResult
+from persona.proxy import SecureProxy, SecurityException
 
 
 @pytest.fixture

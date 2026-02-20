@@ -11,8 +11,8 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from secureagent import SecureProxy, AgentIdentity
-from secureagent.ipi import IndirectPromptInjectionRule
+from persona import SecureProxy, AgentIdentity
+from persona.ipi import IndirectPromptInjectionRule
 
 
 # ═══════════════════════════════════════════════════════════

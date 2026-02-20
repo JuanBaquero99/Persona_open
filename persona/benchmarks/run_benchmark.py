@@ -13,9 +13,9 @@ without needing an LLM API key.
 This is the RIGHT first test: honest detection rate against externally-
 written attack strings that SecureAgent has never seen.
 
-    python -m secureagent.benchmarks.run_benchmark --offline
-    python -m secureagent.benchmarks.run_benchmark --offline --suite workspace
-    python -m secureagent.benchmarks.run_benchmark --offline --strict
+    python -m persona.benchmarks.run_benchmark --offline
+    python -m persona.benchmarks.run_benchmark --offline --suite workspace
+    python -m persona.benchmarks.run_benchmark --offline --strict
 
 -----------------------------------------------------------------
 MODE 2 — Full benchmark (requires OPENAI_API_KEY and LLM)
@@ -25,14 +25,14 @@ while under attack, SecureAgent acts as the defense. Produces the
 Attack Success Rate (ASR) metric comparable to the public leaderboard.
 
     export OPENAI_API_KEY=sk-...
-    python -m secureagent.benchmarks.run_benchmark \\
+    python -m persona.benchmarks.run_benchmark \\
         --suite workspace \\
         --model gpt-4o-mini \\
         --attack important_instructions
 
 -----------------------------------------------------------------
 INSTALL:
-    pip install secureagent agentdojo
+    pip install persona agentdojo
 -----------------------------------------------------------------
 
 Reference:
@@ -50,9 +50,9 @@ import time
 from dataclasses import dataclass, field, asdict
 from typing import Any, Dict, List, Optional
 
-from secureagent.ipi import IndirectPromptInjectionRule
-from secureagent.normalizer import InputNormalizer
-from secureagent.benchmarks.agentdojo_defense import SecureAgentDetector, AGENTDOJO_AVAILABLE
+from persona.ipi import IndirectPromptInjectionRule
+from persona.normalizer import InputNormalizer
+from persona.benchmarks.agentdojo_defense import SecureAgentDetector, AGENTDOJO_AVAILABLE
 
 
 # ------------------------------------------------------------------------------
@@ -323,7 +323,7 @@ def run_full_benchmark(
 
     This calls AgentDojo's benchmark script with:
         --defense input_sanitizer (replaced by SecureAgentDetector via module load)
-        --module-to-load secureagent.benchmarks.agentdojo_defense
+        --module-to-load persona.benchmarks.agentdojo_defense
 
     Produces Attack Success Rate (ASR) comparable to the public leaderboard.
     """
@@ -338,8 +338,8 @@ def run_full_benchmark(
         "--suite", suite,
         "--model", model,
         "--attack", attack,
-        "--defense", "secureagent",
-        "--module-to-load", "secureagent.benchmarks.agentdojo_defense",
+        "--defense", "persona",
+        "--module-to-load", "persona.benchmarks.agentdojo_defense",
     ]
 
     print(f"\nRunning full AgentDojo benchmark:")
@@ -364,12 +364,12 @@ def main() -> None:
         epilog="""
 Examples:
   # Offline scan (no API key needed):
-  python -m secureagent.benchmarks.run_benchmark --offline
-  python -m secureagent.benchmarks.run_benchmark --offline --suite workspace --verbose
-  python -m secureagent.benchmarks.run_benchmark --offline --strict --output results.json
+  python -m persona.benchmarks.run_benchmark --offline
+  python -m persona.benchmarks.run_benchmark --offline --suite workspace --verbose
+  python -m persona.benchmarks.run_benchmark --offline --strict --output results.json
 
   # Full benchmark (requires OPENAI_API_KEY):
-  python -m secureagent.benchmarks.run_benchmark --suite workspace --model gpt-4o-mini
+  python -m persona.benchmarks.run_benchmark --suite workspace --model gpt-4o-mini
         """,
     )
 

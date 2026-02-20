@@ -7,7 +7,7 @@ rapid enumeration, cleanup evasion, confused deputy.
 
 import pytest
 import time
-from secureagent.callchain import (
+from persona.callchain import (
     CallChain, CallChainAnomaly, AnomalyType, ToolCall,
 )
 

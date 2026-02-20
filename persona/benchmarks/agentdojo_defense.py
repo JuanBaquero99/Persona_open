@@ -15,7 +15,7 @@ How AgentDojo defense integration works:
     content is replaced with a safe placeholder — or execution is aborted
     if raise_on_injection=True.
 
-    SecureAgentDetector wraps secureagent.ipi.IndirectPromptInjectionRule,
+    SecureAgentDetector wraps persona.ipi.IndirectPromptInjectionRule,
     which scans for IPI patterns: hidden HTML, zero-width chars, base64
     payloads, data: URIs, markdown exploits, and instruction-like text.
 
@@ -24,10 +24,10 @@ Usage with AgentDojo CLI:
         --suite workspace \\
         --model gpt-4o-mini \\
         --defense input_sanitizer \\
-        --module-to-load secureagent.benchmarks.agentdojo_defense
+        --module-to-load persona.benchmarks.agentdojo_defense
 
 Usage programmatic:
-    from secureagent.benchmarks.agentdojo_defense import SecureAgentDetector
+    from persona.benchmarks.agentdojo_defense import SecureAgentDetector
     detector = SecureAgentDetector(raise_on_injection=True)
     is_injection, confidence = detector.detect(tool_output)
 
@@ -41,8 +41,8 @@ from __future__ import annotations
 
 from typing import Literal, Optional, Tuple, Union
 
-from secureagent.ipi import IndirectPromptInjectionRule, IPIDetection
-from secureagent.normalizer import InputNormalizer
+from persona.ipi import IndirectPromptInjectionRule, IPIDetection
+from persona.normalizer import InputNormalizer
 
 # ──────────────────────────────────────────────────────────────────────────────
 # AgentDojo import — optional dependency
@@ -116,7 +116,7 @@ class SecureAgentDetector(PromptInjectionDetector):
             print(f"IPI detected (confidence={confidence:.2f})")
     """
 
-    name = "secureagent"
+    name = "persona"
 
     def __init__(
         self,

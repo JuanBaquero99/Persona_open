@@ -11,8 +11,8 @@ Supported benchmarks:
 
 Usage:
     # Offline scan (no API key, no LLM):
-    python -m secureagent.benchmarks.run_benchmark --offline
+    python -m persona.benchmarks.run_benchmark --offline
 
     # Full benchmark (requires OPENAI_API_KEY):
-    python -m secureagent.benchmarks.run_benchmark --suite workspace --model gpt-4o-mini
+    python -m persona.benchmarks.run_benchmark --suite workspace --model gpt-4o-mini
 """

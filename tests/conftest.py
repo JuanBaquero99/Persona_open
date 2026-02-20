@@ -6,7 +6,7 @@ and we need predictable, controlled responses to simulate specific attacks.
 """
 
 import pytest
-from secureagent import SecureProxy
+from persona import SecureProxy
 
 
 class MockAgent:

@@ -11,8 +11,8 @@ Each test documents EXACTLY what attack it simulates and which paper it referenc
 """
 
 import pytest
-from secureagent import SecureProxy
-from secureagent.proxy import SecurityException
+from persona import SecureProxy
+from persona.proxy import SecurityException
 
 
 class TestProxyBlocksCredentialExfiltration:

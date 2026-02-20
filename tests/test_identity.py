@@ -7,8 +7,8 @@ Attack reference: OpenClaw incident (Feb 13, 2026)
 """
 
 import pytest
-from secureagent.rules import AgentIdentityRule
-from secureagent.proxy import SecureProxy, SecurityException
+from persona.rules import AgentIdentityRule
+from persona.proxy import SecureProxy, SecurityException
 
 
 # ─────────────────────────────────────────────

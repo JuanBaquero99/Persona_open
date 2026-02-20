@@ -21,14 +21,14 @@ import logging
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Suppress proxy logger noise in CLI mode
-logging.getLogger("secureagent.proxy").setLevel(logging.CRITICAL + 1)
+logging.getLogger("persona.proxy").setLevel(logging.CRITICAL + 1)
 
-from secureagent.proxy import SecureProxy, SecurityException
-from secureagent.identity import AgentIdentity
-from secureagent.ipi import IndirectPromptInjectionRule
-from secureagent.domain import DomainFilterRule
-from secureagent.toolguard import ToolGuard, ToolCallVerdict, ToolPolicy, Permission, ViolationType
-from secureagent.callchain import CallChain, CallChainAnomaly, AnomalyType
+from persona.proxy import SecureProxy, SecurityException
+from persona.identity import AgentIdentity
+from persona.ipi import IndirectPromptInjectionRule
+from persona.domain import DomainFilterRule
+from persona.toolguard import ToolGuard, ToolCallVerdict, ToolPolicy, Permission, ViolationType
+from persona.callchain import CallChain, CallChainAnomaly, AnomalyType
 
 
 # ═══════════════════════════════════════════════════════════
@@ -388,7 +388,7 @@ INTEGRATIONS = {
         "name": "OpenAI (GPT-4o, o3)",
         "code": textwrap.dedent("""\
             from openai import OpenAI
-            from secureagent import SecureProxy
+            from persona import SecureProxy
 
             client = OpenAI()
 
@@ -410,7 +410,7 @@ INTEGRATIONS = {
         "code": textwrap.dedent("""\
             from langchain.agents import create_openai_tools_agent, AgentExecutor
             from langchain_openai import ChatOpenAI
-            from secureagent import SecureProxy
+            from persona import SecureProxy
 
             # Your existing LangChain agent
             llm = ChatOpenAI(model="gpt-4o")
@@ -430,7 +430,7 @@ INTEGRATIONS = {
         "name": "CrewAI Agent",
         "code": textwrap.dedent("""\
             from crewai import Agent, Task, Crew
-            from secureagent import SecureProxy
+            from persona import SecureProxy
 
             # Your CrewAI agent
             researcher = Agent(
@@ -457,7 +457,7 @@ INTEGRATIONS = {
         "name": "Anthropic (Claude)",
         "code": textwrap.dedent("""\
             from anthropic import Anthropic
-            from secureagent import SecureProxy
+            from persona import SecureProxy
 
             client = Anthropic()
 
@@ -476,7 +476,7 @@ INTEGRATIONS = {
     "custom": {
         "name": "Any Agent (custom)",
         "code": textwrap.dedent("""\
-            from secureagent import SecureProxy, AgentIdentity
+            from persona import SecureProxy, AgentIdentity
 
             # Option A: Class with .run() method
             class MyAgent:
@@ -515,7 +515,7 @@ INTEGRATIONS = {
         "name": "Production Deployment (FastAPI)",
         "code": textwrap.dedent("""\
             from fastapi import FastAPI, HTTPException
-            from secureagent import SecureProxy, AgentIdentity, SecurityException
+            from persona import SecureProxy, AgentIdentity, SecurityException
 
             app = FastAPI()
             identity = AgentIdentity.generate("api-agent-v1")
@@ -551,7 +551,7 @@ INTEGRATIONS = {
     "toolguard": {
         "name": "ToolGuard (tool-level firewall)",
         "code": textwrap.dedent("""\
-            from secureagent import SecureProxy, ToolGuard, Permission
+            from persona import SecureProxy, ToolGuard, Permission
 
             def my_agent(prompt: str) -> str:
                 return call_your_llm(prompt)

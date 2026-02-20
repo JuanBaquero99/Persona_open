@@ -13,7 +13,7 @@ Ensures the normalizer can reverse common evasion techniques:
 """
 
 import pytest
-from secureagent.normalizer import InputNormalizer
+from persona.normalizer import InputNormalizer
 
 
 @pytest.fixture

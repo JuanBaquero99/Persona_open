@@ -31,7 +31,7 @@ jobs:
         run: pip install -e ".[dev]"
 
       - name: Run tests with coverage
-        run: pytest tests/ -v --cov=secureagent --cov-report=term-missing --cov-report=xml --cov-fail-under=85
+        run: pytest tests/ -v --cov=persona --cov-report=term-missing --cov-report=xml --cov-fail-under=85
 
       - name: Upload coverage to Codecov
         if: matrix.python-version == '3.11'
@@ -61,13 +61,13 @@ jobs:
         run: pip install -e ".[dev]"
 
       - name: Ruff (linting)
-        run: ruff check secureagent/ tests/
+        run: ruff check persona/ tests/
 
       - name: Ruff (formatting check)
-        run: ruff format --check secureagent/ tests/
+        run: ruff format --check persona/ tests/
 
       - name: Mypy (type checking)
-        run: mypy secureagent/ --ignore-missing-imports
+        run: mypy persona/ --ignore-missing-imports
 
   # ─────────────────────────────────────────────
   # 3. Security Scan
@@ -89,10 +89,10 @@ jobs:
         run: pip install bandit safety pip-audit
 
       - name: Bandit (static code analysis)
-        run: bandit -r secureagent/ -ll --format json -o bandit-report.json || true
+        run: bandit -r persona/ -ll --format json -o bandit-report.json || true
 
       - name: Show Bandit results
-        run: bandit -r secureagent/ -ll || true
+        run: bandit -r persona/ -ll || true
 
       - name: pip-audit (dependency vulnerabilities)
         run: pip-audit --requirement <(pip freeze) --ignore-vuln PYSEC-2022-42969 || true
@@ -133,5 +133,5 @@ jobs:
       - name: Smoke test install
         run: |
           pip install dist/*.whl
-          python -c "from secureagent import SecureProxy; print('✓ SecureProxy importable')"
-          python -c "from secureagent import SecurityRule, CredentialPattern; print('✓ Public API intact')"
+          python -c "from persona import SecureProxy; print('✓ SecureProxy importable')"
+          python -c "from persona import SecurityRule, CredentialPattern; print('✓ Public API intact')"

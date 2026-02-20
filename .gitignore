@@ -38,3 +38,4 @@ Thumbs.db
 # Benchmark output
 sim_output.txt
 results_*.json
+sim_results.json

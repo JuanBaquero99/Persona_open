@@ -8,7 +8,7 @@ destructive operations, sandbox enforcement.
 
 import pytest
 import time
-from secureagent.toolguard import (
+from persona.toolguard import (
     ToolGuard, ToolCallVerdict, ToolPolicy, Permission,
     ViolationType, PERMISSION_HIERARCHY,
 )

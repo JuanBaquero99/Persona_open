@@ -1,8 +1,8 @@
 # SecureAgent
 
-[![CI](https://github.com/JuanBaquero99/secureagent/actions/workflows/ci.yml/badge.svg)](https://github.com/JuanBaquero99/secureagent/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://pypi.org/project/secureagent/)
-[![Coverage](https://codecov.io/gh/JuanBaquero99/secureagent/branch/main/graph/badge.svg)](https://codecov.io/gh/JuanBaquero99/secureagent)
+[![CI](https://github.com/JuanBaquero99/persona/actions/workflows/ci.yml/badge.svg)](https://github.com/JuanBaquero99/persona/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://pypi.org/project/persona/)
+[![Coverage](https://codecov.io/gh/JuanBaquero99/persona/branch/main/graph/badge.svg)](https://codecov.io/gh/JuanBaquero99/persona)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **Runtime security proxy for AI agents.**  
@@ -27,7 +27,7 @@ pip install persona-proxy
 ```
 
 ```python
-from secureagent import SecureProxy
+from persona import SecureProxy
 
 # Wrap your existing agent — no changes to agent internals required
 proxy = SecureProxy(your_agent)
@@ -66,8 +66,8 @@ That's it. Your agent is now protected.
 ## Full example
 
 ```python
-from secureagent import SecureProxy
-from secureagent.rules import CredentialDetectionRule, ToolWhitelistRule, RateLimitRule
+from persona import SecureProxy
+from persona.rules import CredentialDetectionRule, ToolWhitelistRule, RateLimitRule
 
 # Configure with explicit rules
 proxy = SecureProxy(
@@ -104,7 +104,7 @@ SecureProxy wraps any object with a `.run(prompt)` method or a callable `agent(p
 ```python
 from langchain.agents import initialize_agent, load_tools
 from langchain_openai import ChatOpenAI
-from secureagent import SecureProxy, SecurityException
+from persona import SecureProxy, SecurityException
 
 # Build your agent as usual
 llm = ChatOpenAI(model="gpt-4o-mini")
@@ -137,7 +137,7 @@ To also intercept intermediate tool calls, hook them at the LangChain level:
 
 ```python
 from langchain.callbacks.base import BaseCallbackHandler
-from secureagent import SecureProxy, SecurityException
+from persona import SecureProxy, SecurityException
 
 class SecureAgentCallback(BaseCallbackHandler):
     def __init__(self, proxy: SecureProxy):
@@ -161,7 +161,7 @@ result = proxy._validate_output(result)  # still sanitize the output
 
 ```python
 from crewai import Agent, Task, Crew
-from secureagent import SecureProxy, SecurityException
+from persona import SecureProxy, SecurityException
 
 researcher = Agent(role="Researcher", goal="Find facts", backstory="...")
 task = Task(description="Research AI security trends", agent=researcher)
@@ -185,7 +185,7 @@ The same intermediate-tool-call caveat applies to CrewAI. Use CrewAI's step call
 
 [OpenClaw](https://github.com/openclaw/openclaw) is an open-source AI agent platform (211k+ stars) that connects agents to channels like WhatsApp and Telegram via a WebSocket Gateway. Agents in OpenClaw have access to powerful tools — file system, shell, browser, camera — making security enforcement critical.
 
-`secureagent.openclaw` implements a **WebSocket proxy** that sits between OpenClaw's inbound channels and its Gateway:
+`persona.openclaw` implements a **WebSocket proxy** that sits between OpenClaw's inbound channels and its Gateway:
 
 ```
 WhatsApp / Telegram / Web
@@ -210,7 +210,7 @@ Every message and tool call passes through SecureAgent before reaching the agent
 ### Usage
 
 ```python
-from secureagent.openclaw import OpenClawGuard, OpenClawSecurityProxy
+from persona.openclaw import OpenClawGuard, OpenClawSecurityProxy
 
 # 1) Validate individual messages (programmatic)
 guard = OpenClawGuard()
@@ -242,8 +242,8 @@ No LLM or API key required. Run it yourself:
 
 ```bash
 pip install persona-proxy agentdojo
-python -m secureagent.benchmarks.run_benchmark --offline
-python -m secureagent.benchmarks.run_benchmark --offline --suite workspace --verbose
+python -m persona.benchmarks.run_benchmark --offline
+python -m persona.benchmarks.run_benchmark --offline --suite workspace --verbose
 ```
 
 ### Detection breakdown by attack family
@@ -313,10 +313,10 @@ SecureAgent is **2 lines of Python, blocks in real-time, no external infrastruct
 ## Running tests locally
 
 ```bash
-git clone https://github.com/JuanBaquero99/secureagent
-cd secureagent
+git clone https://github.com/JuanBaquero99/persona
+cd persona
 pip install -e ".[dev]"
-pytest tests/ -v --cov=secureagent
+pytest tests/ -v --cov=persona
 ```
 
 Expected output:

@@ -11,7 +11,7 @@ Attack reference: MalTool attacks (arXiv:2602.12194)
 """
 
 import pytest
-from secureagent.rules import ToolWhitelistRule
+from persona.rules import ToolWhitelistRule
 
 
 class TestToolWhitelist:

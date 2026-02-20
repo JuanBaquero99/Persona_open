@@ -21,10 +21,10 @@ import time
 # Add parent dir to path for dev usage
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from secureagent.proxy import SecureProxy, SecurityException
-from secureagent.identity import AgentIdentity
-from secureagent.ipi import IndirectPromptInjectionRule
-from secureagent.domain import DomainFilterRule
+from persona.proxy import SecureProxy, SecurityException
+from persona.identity import AgentIdentity
+from persona.ipi import IndirectPromptInjectionRule
+from persona.domain import DomainFilterRule
 
 
 # ─────────────────────────────────────────────────────────────

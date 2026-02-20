@@ -58,12 +58,12 @@ Repository = "https://github.com/JuanBaquero99/Persona_open"
 Issues = "https://github.com/JuanBaquero99/Persona_open/issues"
 
 [tool.setuptools]
-packages = ["secureagent", "secureagent.benchmarks"]
+packages = ["persona", "persona.benchmarks"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "--cov=secureagent --cov-report=term-missing"
+addopts = "--cov=persona --cov-report=term-missing"
 
 [tool.mypy]
 python_version = "3.9"

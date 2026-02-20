@@ -175,7 +175,7 @@ python persona.py integrate production    # FastAPI deployment
 ## 7️⃣ Suite Completo de Tests (168 tests)
 
 ```bash
-pytest tests/ -v --cov=secureagent
+pytest tests/ -v --cov=persona
 ```
 
 Resultado esperado:
@@ -237,7 +237,7 @@ python examples/test_integration.py
 
 ```python
 # Integra Persona en tu agente real:
-from secureagent import SecureProxy
+from persona import SecureProxy
 
 proxy = SecureProxy(tu_agente)
 result = proxy.run("user input")  # Automáticamente protegido

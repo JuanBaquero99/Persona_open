@@ -12,8 +12,8 @@ Reference papers:
 
 import base64
 import pytest
-from secureagent.ipi import IndirectPromptInjectionRule, IPIDetection
-from secureagent.proxy import SecureProxy, SecurityException
+from persona.ipi import IndirectPromptInjectionRule, IPIDetection
+from persona.proxy import SecureProxy, SecurityException
 
 
 @pytest.fixture

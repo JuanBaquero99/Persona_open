@@ -13,8 +13,8 @@ Validates:
 
 import time
 import pytest
-from secureagent.identity import AgentIdentity
-from secureagent.proxy import SecureProxy
+from persona.identity import AgentIdentity
+from persona.proxy import SecureProxy
 
 
 # ─────────────────────────────────────────────

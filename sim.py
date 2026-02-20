@@ -28,13 +28,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Suppress noise
 import logging
-logging.getLogger("secureagent.proxy").setLevel(logging.CRITICAL + 1)
+logging.getLogger("persona.proxy").setLevel(logging.CRITICAL + 1)
 
-from secureagent.proxy import SecureProxy, SecurityException
-from secureagent.identity import AgentIdentity
-from secureagent.toolguard import ToolGuard, Permission
-from secureagent.callchain import CallChain
-from secureagent.attacks import (
+from persona.proxy import SecureProxy, SecurityException
+from persona.identity import AgentIdentity
+from persona.toolguard import ToolGuard, Permission
+from persona.callchain import CallChain
+from persona.attacks import (
     AttackGenerator, AttackVariant, AttackLevel, AttackTechnique,
     PromptAttacks, ToolAttacks, ObfuscationEngine,
 )

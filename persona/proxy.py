@@ -8,19 +8,19 @@ from typing import Any, List, Dict, Optional, Callable
 from dataclasses import dataclass, asdict
 from datetime import datetime
 
-from secureagent.rules import (
+from persona.rules import (
     SecurityRule,
     CredentialDetectionRule,
     ToolWhitelistRule,
     RateLimitRule,
     AgentIdentityRule,
 )
-from secureagent.identity import AgentIdentity
-from secureagent.ipi import IndirectPromptInjectionRule, IPIDetection
-from secureagent.domain import DomainFilterRule, DomainScanResult
-from secureagent.toolguard import ToolGuard, ToolCallVerdict, ToolPolicy, Permission, ViolationType
-from secureagent.callchain import CallChain, CallChainAnomaly, AnomalyType
-from secureagent.normalizer import InputNormalizer
+from persona.identity import AgentIdentity
+from persona.ipi import IndirectPromptInjectionRule, IPIDetection
+from persona.domain import DomainFilterRule, DomainScanResult
+from persona.toolguard import ToolGuard, ToolCallVerdict, ToolPolicy, Permission, ViolationType
+from persona.callchain import CallChain, CallChainAnomaly, AnomalyType
+from persona.normalizer import InputNormalizer
 
 
 logging.basicConfig(level=logging.INFO)

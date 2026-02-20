@@ -10,7 +10,7 @@ Run:
     python examples/demo_proxy.py
 """
 
-from secureagent import SecureProxy
+from persona import SecureProxy
 
 
 # ─────────────────────────────────────────────────────────────────────────────
