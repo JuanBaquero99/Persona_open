@@ -23,7 +23,7 @@ SecureAgent enforces policies **at runtime**, in Python, with zero infrastructur
 ## Quick start
 
 ```bash
-pip install secureagent
+pip install persona-proxy
 ```
 
 ```python
@@ -241,7 +241,7 @@ SecureAgent is validated against [AgentDojo](https://agentdojo.spylab.ai) — th
 No LLM or API key required. Run it yourself:
 
 ```bash
-pip install secureagent agentdojo
+pip install persona-proxy agentdojo
 python -m secureagent.benchmarks.run_benchmark --offline
 python -m secureagent.benchmarks.run_benchmark --offline --suite workspace --verbose
 ```
