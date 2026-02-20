@@ -255,6 +255,19 @@ class SecureProxy:
             (r"(?:in\s+a|imagine\s+a)\s+(?:world|scenario|situation)\s+(?:where|with)\s+(?:no|without)\s+(?:rules?|restrictions?|guidelines?|safety|filters?)", "hypothetical_bypass"),
             (r"for\s+(?:educational|research|academic|testing)\s+purposes?\s*,?\s*(?:only|ignore|bypass|override|show|reveal)", "hypothetical_bypass"),
 
+            # ── Spanish instruction override ──────────────────────
+            (r"ignora\b.{0,60}(?:instrucciones?|reglas?|directrices?|restricciones?|pautas?|normas?|limitaciones?|programaci[oó]n)", "instruction_override"),
+            (r"olvida\b.{0,60}(?:instrucciones?|reglas?|directrices?|restricciones?|entrenamiento|programaci[oó]n|lo\s+que\s+te)", "instruction_override"),
+            (r"(?:deja|pon)\b.{0,40}(?:de\s+lado|de\s+seguir)\b.{0,40}(?:instrucciones?|reglas?|restricciones?)", "instruction_override"),
+            (r"tu\s+(?:nueva|verdadera|real|actual)\s+(?:tarea|misi[oó]n|objetivo|funci[oó]n|prop[oó]sito)\s+(?:es|ser[aá])", "instruction_injection"),
+            (r"actua\s+como\s+si\b.{0,60}(?:sin\s+restricciones?|sin\s+reglas?|libremente|no\s+tuvieras?)", "jailbreak_persona"),
+            (r"eres?\s+libre\s+de\b.{0,60}(?:hacer|responder|ejecutar|seguir|ignorar)", "jailbreak_persona"),
+            (r"(?:desactiva|deshabilita|apaga)\b.{0,40}(?:seguridad|filtros?|restricciones?|protecci[oó]n)", "security_bypass"),
+            (r"(?:evita|elude|salta)\b.{0,40}(?:seguridad|filtros?|restricciones?|limitaciones?)", "security_bypass"),
+            (r"(?:dame|dime|muéstrame|muestrame|revela|muestra)\b.{0,50}(?:claves?|contrase[ñn]as?|credenciales?|tokens?|secretos?|api\s*key)", "flexible_exfil_intent"),
+            (r"(?:revela|muestra|repite|copia)\b.{0,40}(?:instrucciones?\s+del\s+sistema|prompt\s+del\s+sistema|instrucciones?\s+originales?|programaci[oó]n)", "prompt_extraction"),
+            (r"no\s+(?:tienes?|debes?|necesitas?)\s+(?:seguir|obedecer|respetar)\b.{0,40}(?:reglas?|instrucciones?|restricciones?)", "rule_negation"),
+
             # ── Token manipulation / delimiter attacks ────────────
             (r"<\|(?:im_start|system|endoftext)\|>", "delimiter_attack"),
             (r"\[/?(?:INST|SYS|SYSTEM)\]", "delimiter_attack"),
